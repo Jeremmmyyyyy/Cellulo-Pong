@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Gem : MonoBehaviour
 {
     private GameManager gameManager;
-    private bool stopSpawning = false;
     static bool gameStarted;
     private bool isActive;
     private bool isCollided;

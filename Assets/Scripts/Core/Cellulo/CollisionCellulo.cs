@@ -19,7 +19,7 @@ public class CollisionCellulo : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if ((gameObject.tag == "P1") && ((collision.gameObject.tag != "Sheep") && (collision.gameObject.tag != "Ghost")));
+        if ((gameObject.tag == "P1") && ((collision.gameObject.tag != "Sheep") && (collision.gameObject.tag != "Ghost")))
         {
             if (gameManager.getGemIsCollectedP1())
             {

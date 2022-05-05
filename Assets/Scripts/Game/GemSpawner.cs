@@ -5,7 +5,6 @@ using UnityEngine;
 public class GemSpawner : MonoBehaviour
 {
     private GameManager gameManager;
-    private bool stopSpawning = false;
     static bool gameStarted;
     Gem gemToSpawn;
     // Start is called before the first frame update
