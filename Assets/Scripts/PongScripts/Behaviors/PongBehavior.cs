@@ -27,4 +27,10 @@ public class PongBehavior : AgentBehaviour
         steering.linear = this.transform.parent.TransformDirection(Vector3.ClampMagnitude(steering.linear, agent.maxAccel));
         return steering;
     }
+
+    private void OnCollisionEnter(Collision collision) {
+        Debug.Log("Collision");
+        ContactPoint contactPoint = collision.contacts[0];
+        direction = Vector3.Reflect(direction, contactPoint.normal);
+    }
 }
