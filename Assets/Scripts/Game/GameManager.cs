@@ -8,31 +8,35 @@ using UnityEngine.UI;
 //cette classe s'occupe de gerer toute la partie score
 public class GameManager : MonoBehaviour
 {
+
+    //PUBLIC METHODS
+    //TODO: mettre en public si on en a besoin
+    private TextMeshProUGUI score1;
+    private TextMeshProUGUI score2;
+    public CelluloAgent celluloPlayer1;
+    public CelluloAgent celluloPlayer2;
+    public CelluloAgent pong;
+    private CelluloAgent celluloPlayer1UI;
+    private CelluloAgent celluloPlayer2UI;
+    private Toggle toggleMute;
+
+
     // Start is called before the first frame update
     private int scorePlayer1;
     private int scorePlayer2;
-    public TextMeshProUGUI score1;
-    public TextMeshProUGUI score2;
     private bool gameAsStart = false;
     private Color winnerCol;
     private Color cellulo1Color;
     private Color cellulo2Color;
-    public CelluloAgent celluloPlayer1;
-    public CelluloAgent celluloPlayer2;
-    public CelluloAgent ghostSheep;
-    public CelluloAgent celluloPlayer1UI;
-    public CelluloAgent celluloPlayer2UI;
     private bool player1IsArrow;
     private bool gameCanStart;
     private bool toggleP1Selected;
     private bool toggleP2Selected;
     private float timeOfAGame = 2;
     private bool gameIsMute;
-    public Toggle toggleMute;
     private bool isGemCollectedP1;
     private bool isGemCollectedP2;
-   
-
+    private bool printDebugScore = true;
     private bool botIsGhost = false;
 
 
@@ -54,10 +58,23 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        score1.text = scorePlayer1.ToString("00");
-        score1.color = cellulo1Color;
-        score2.text = scorePlayer2.ToString("00");
-        score2.color = cellulo2Color;
+        updateScore();
+        toggleUpdate();
+    }
+
+    void updateScore(){
+        if(score1 != null && score2 != null){
+            score1.text = scorePlayer1.ToString("00");
+            score1.color = cellulo1Color;
+            score2.text = scorePlayer2.ToString("00");
+            score2.color = cellulo2Color;
+        }else if(printDebugScore){
+            Debug.Log("GAMEMANGER: change score to public if you want to use it");
+            printDebugScore = false;
+        }
+    }
+
+    void toggleUpdate(){
         if (toggleP1Selected && toggleP2Selected)
         {
             gameCanStart = true;
@@ -67,7 +84,7 @@ public class GameManager : MonoBehaviour
     private void clearHaptic(){
         celluloPlayer1.ClearHapticFeedback();
         celluloPlayer2.ClearHapticFeedback();
-        ghostSheep.ClearHapticFeedback();
+        pong.ClearHapticFeedback();
     }
 
     //changer le statut du jeu
