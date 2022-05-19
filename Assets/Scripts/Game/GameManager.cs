@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public CelluloAgent celluloPlayer1;
     public CelluloAgent celluloPlayer2;
     public CelluloAgent pong;
-    private CelluloAgent celluloPlayer1UI;
+    public CelluloAgent celluloPlayer1UI;
     private CelluloAgent celluloPlayer2UI;
     private Toggle toggleMute;
 
@@ -38,6 +38,9 @@ public class GameManager : MonoBehaviour
     private bool isGemCollectedP2;
     private bool printDebugScore = true;
     private bool botIsGhost = false;
+    private List<string> powerP1;
+    private List<string> powerP2;
+
 
 
     void Start()
@@ -273,6 +276,19 @@ public class GameManager : MonoBehaviour
     {
         return !player1IsArrow;
     }
+    public void setTooglePowerAreSelected(bool tP1, bool tP2, string power)
+    {
+        if (tP1)
+        {
+            toggleP1Selected = true;
+        }
+        if (tP2)
+        {
+            toggleP2Selected = true;
+        }
+    }
+
+
 
     public void setToogleAreSelected(bool tP1, bool tP2)
     {
