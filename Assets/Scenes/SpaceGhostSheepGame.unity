@@ -4174,17 +4174,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &757856784 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2364173123880399170, guid: d44936f6062330e28ab4d37456de1881, type: 3}
-  m_PrefabInstance: {fileID: 1486983637}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 757856779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b22fc8145a85444459acb654a0e35eb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &785655020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4815,17 +4804,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &938138812 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2364173123880399170, guid: d44936f6062330e28ab4d37456de1881, type: 3}
-  m_PrefabInstance: {fileID: 1338181905}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 938138809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b22fc8145a85444459acb654a0e35eb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &951783504
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9930,14 +9908,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 255ba3f660a896b0dbe44a4040fdfee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score1: {fileID: 2085750510}
-  score2: {fileID: 1876028820}
   celluloPlayer1: {fileID: 291289440}
   celluloPlayer2: {fileID: 1835796962}
-  ghostSheep: {fileID: 1837048879}
-  celluloPlayer1UI: {fileID: 757856784}
-  celluloPlayer2UI: {fileID: 938138812}
-  toggleMute: {fileID: 0}
+  pong: {fileID: 1837048879}
 --- !u!4 &1572025989
 Transform:
   m_ObjectHideFlags: 0
