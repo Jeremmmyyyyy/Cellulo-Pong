@@ -6,6 +6,8 @@ public class PongBehavior : AgentBehaviour
 {
     public float accelAdjust = 2.0f;
     private Vector3 direction;
+    private bool isWallCollided;
+    private Rigidbody rigidBody;
     // Start is called before the first frame update
     private Vector3 startBallMovement(){
         float random = Random.Range(0, 2);
@@ -18,8 +20,17 @@ public class PongBehavior : AgentBehaviour
 
     void Start()
     {
+        rigidBody = this.GetComponent<Rigidbody>();
+        isWallCollided = false;
         direction = startBallMovement();
         //TODO: ajouter le moveonice 
+    }
+    void Update()
+    {
+        if (isWallCollided)
+        {
+            rigidBody.detectCollisions = false;
+        }
     }
     //Called at each frame of the game
     public override Steering GetSteering()
@@ -33,5 +44,11 @@ public class PongBehavior : AgentBehaviour
     private void OnCollisionEnter(Collision collision) {
         ContactPoint contactPoint = collision.contacts[0];
         direction = Vector3.Reflect(direction, contactPoint.normal);
+        Debug.Log("In OnCollisionEnter");
+        if (collision.transform.parent.gameObject.CompareTag("LWall") || collision.transform.parent.gameObject.CompareTag("RWall"))
+        {
+            Debug.Log("Touched wall");
+            isWallCollided = true;
+        }
     }
 }

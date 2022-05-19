@@ -9,6 +9,8 @@ TagManager:
   - Ghost
   - P2
   - Gem
+  - LWall
+  - RWall
   layers:
   - Default
   - TransparentFX
