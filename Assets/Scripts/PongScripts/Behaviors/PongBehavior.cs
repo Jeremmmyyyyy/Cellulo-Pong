@@ -7,6 +7,7 @@ public class PongBehavior : AgentBehaviour
     public float accelAdjust = 2.0f;
     private Vector3 direction;
     private bool isWallCollided;
+    private bool stopBall;
     //private Rigidbody rigidBody;
     // private GameObject leftWall;
     // private GameObject rightWall;
@@ -40,8 +41,13 @@ public class PongBehavior : AgentBehaviour
     public override Steering GetSteering()
     {
         Steering steering = new Steering();
-        steering.linear = direction * agent.maxAccel;
-        steering.linear = this.transform.parent.TransformDirection(Vector3.ClampMagnitude(steering.linear, (agent.maxAccel + accelAdjust)));
+
+        if(stopBall){
+            steering.linear = new Vector3(0, 0, 0);
+        }else{
+            steering.linear = direction * agent.maxAccel;
+            steering.linear = this.transform.parent.TransformDirection(Vector3.ClampMagnitude(steering.linear, (agent.maxAccel + accelAdjust)));
+        }
         return steering;
     }
 
@@ -60,6 +66,12 @@ public class PongBehavior : AgentBehaviour
     // }
 
     public void crazyBall(){
-
+        stopBall = true;
+        Invoke("setBoolFalse", 5.0f);
     }
+
+    public void setBoolFalse(){
+        stopBall = false;
+    }
+    
 }
