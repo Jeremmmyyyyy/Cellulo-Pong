@@ -4,7 +4,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-
 //cette classe s'occupe de gerer toute la partie score
 public class GameManager : MonoBehaviour
 {
@@ -21,6 +20,8 @@ public class GameManager : MonoBehaviour
     private Toggle toggleMute;
     public GameObject gameObjectAnimcheckSizeMenuP1;
     public GameObject gameObjectAnimcheckSizeMenuP2;
+    public GameObject gameObjectAnimVolume;
+
 
     // Start is called before the first frame update
     private int scorePlayer1;
@@ -43,11 +44,19 @@ public class GameManager : MonoBehaviour
     private List<string> powerP2;
     private Animator animCheckSizeMenuP1;
     private Animator animCheckSizeMenuP2;
+    private Animator animVolume;
+    private int volume;
 
 
-
+    void Awake()
+    {
+        animVolume = gameObjectAnimVolume.gameObject.GetComponent<Animator>();
+ 
+    }
     void Start()
     {
+        volume = 3;
+   
         toggleP1Selected = false;
         toggleP2Selected = false;
         scorePlayer1 = 0;
@@ -421,4 +430,22 @@ public class GameManager : MonoBehaviour
     public List<string> getPower2(){
         return powerP2;
     }
+    public int getVolume()
+    {
+        return volume;
+    }
+
+    public void setVolume(int v)
+    {
+        volume = v;
+    }
+    public void initializeVolumeMenu()
+    {
+        animVolume = gameObjectAnimVolume.gameObject.GetComponent<Animator>();
+        if (animVolume.gameObject.activeSelf)
+        {
+            animVolume.SetInteger("Volume", volume);
+        }
+    }
+
 }
