@@ -14,6 +14,8 @@ public class Powers : MonoBehaviour
     private List<string> ListPower2;
     private bool status;
 
+    private Dictionary<string, Color> colorPowerList;
+
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,13 @@ public class Powers : MonoBehaviour
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         pongBehavior = GameObject.Find("PongBehavior").GetComponent<PongBehavior>();
         status = false;
+
+        colorPowerList = new Dictionary<string, Color>();
+        colorPowerList.Add("CRAZYBALL", Color.magenta);
+        colorPowerList.Add("ZONEENLARGER", Color.red);
+        colorPowerList.Add("ZONESHRINKER", Color.blue);
+        colorPowerList.Add("FREEZEOPPONENT", Color.cyan);
+        colorPowerList.Add("SLIMEOPPONENT", Color.green);
     }
 
     private void Update() {
@@ -94,6 +103,8 @@ public class Powers : MonoBehaviour
     }
     private void freezeOponent(CelluloAgent playerToFreeze){
         Debug.Log("freeze oponent");
+        playerToFreeze.SetHapticBackdriveAssist(-1, -1, -1);
+        Invoke("clearHapticFeedback", 5);
     }
     private void slimeOponent(CelluloAgent playerToSlime){
         Debug.Log("slime oponent");
@@ -107,6 +118,45 @@ public class Powers : MonoBehaviour
     }
 
     public void powerColors(){
-       // PaddlePlayer1.
+        //reset the color of the cellulos after the game has started and the players have found their cellulo
+        PaddlePlayer1.SetVisualEffect(VisualEffect.VisualEffectConstAll, Color.black, 0);
+        PaddlePlayer2.SetVisualEffect(VisualEffect.VisualEffectConstAll, Color.black, 0);
+        ListPower1 = gameManager.getPower1();
+        ListPower2 = gameManager.getPower2();
+
+        //assign the leds to the power
+        int j = 0;
+        for(int i = 0; i < ListPower1.Count; ++i){
+            assignLedToPower(PaddlePlayer1, ListPower1[i], j);
+            j += 2;
+        }
+        j=0;
+        for(int i = 0; i < ListPower2.Count; ++i){
+            assignLedToPower(PaddlePlayer2, ListPower2[i], j);
+            j += 2;
+        }
+    }
+
+    public void assignLedToPower(CelluloAgent agent, string power, int LED){
+        switch (power){
+            case "CRAZYBALL":
+                agent.SetVisualEffect(VisualEffect.VisualEffectConstSingle, colorPowerList[power], LED);
+                break;
+            case "ZONEENLARGER":
+                agent.SetVisualEffect(VisualEffect.VisualEffectConstSingle, colorPowerList[power], LED);
+                break;
+            case "ZONESHRINKER":
+                agent.SetVisualEffect(VisualEffect.VisualEffectConstSingle, colorPowerList[power], LED);
+                break;
+            case "FREEZEOPPONENT":
+                agent.SetVisualEffect(VisualEffect.VisualEffectConstSingle, colorPowerList[power], LED);
+                break;
+            case "SLIMEOPPONENT":
+                agent.SetVisualEffect(VisualEffect.VisualEffectConstSingle, colorPowerList[power], LED);
+                break;
+            default:
+                Debug.Log("Not able to add correct color to power");
+                break;
+        }
     }
 }
