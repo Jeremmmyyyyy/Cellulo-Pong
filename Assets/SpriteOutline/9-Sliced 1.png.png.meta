@@ -1,7 +1,34 @@
 fileFormatVersion: 2
-guid: 1b1eaec5d51ebe14db34fcd9922c1a37
+guid: 5240e66835eac0e488f5cd03a5219429
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 2829215490729254748
+    second: 9-Sliced 1.png_0
+  - first:
+      213: 6438773672203170313
+    second: 9-Sliced 1.png_1
+  - first:
+      213: -8717099398188707053
+    second: 9-Sliced 1.png_2
+  - first:
+      213: -2071211797259611237
+    second: 9-Sliced 1.png_3
+  - first:
+      213: 995204783333091992
+    second: 9-Sliced 1.png_4
+  - first:
+      213: 7814221804867871985
+    second: 9-Sliced 1.png_5
+  - first:
+      213: 6781081708577696348
+    second: 9-Sliced 1.png_6
+  - first:
+      213: -7758402574359981233
+    second: 9-Sliced 1.png_7
+  - first:
+      213: -6579755752228622862
+    second: 9-Sliced 1.png_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -46,7 +73,7 @@ TextureImporter:
   spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 10
+  spritePixelsToUnits: 25.6
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
