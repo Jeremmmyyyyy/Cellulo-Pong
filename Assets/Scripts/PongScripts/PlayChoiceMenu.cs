@@ -10,7 +10,7 @@ public class PlayChoiceMenu : MonoBehaviour
     public GameObject canvaChoice;
     void Start()
     {
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>(); ;
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         Button btn = yourButton.GetComponent<Button>();
         btn.onClick.AddListener(TaskOnClick);
     }

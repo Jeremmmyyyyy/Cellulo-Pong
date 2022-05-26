@@ -8,12 +8,12 @@ public class SquareVolumeScript : MonoBehaviour
     public Animator m_Animator;
     public Button plusButton;
     public Button moinsButton;
-    private int volume;
+    private GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        volume = 0;
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         Button btnplus = plusButton.GetComponent<Button>();
         Button btnmoins = moinsButton.GetComponent<Button>();
 
@@ -24,18 +24,19 @@ public class SquareVolumeScript : MonoBehaviour
     // Update is called once per frame
     void TaskOnClickPlus()
     {
-        if (volume <= 6)
+        
+        if (gameManager.getVolume() < 6)
         {
-            volume += 1;
-            m_Animator.SetInteger("Volume", volume);
+            gameManager.setVolume(gameManager.getVolume() + 1);
+            m_Animator.SetInteger("Volume", gameManager.getVolume());
         }
     }
     void TaskOnClickMoins()
     {
-        if (volume >= 0)
+        if (gameManager.getVolume() > 0)
         {
-            volume -= 1;
-            m_Animator.SetInteger("Volume", volume);
+            gameManager.setVolume(gameManager.getVolume() - 1);
+            m_Animator.SetInteger("Volume", gameManager.getVolume());
         }
     }
 }
