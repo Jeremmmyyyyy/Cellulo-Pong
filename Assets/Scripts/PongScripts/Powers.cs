@@ -12,6 +12,7 @@ public class Powers : MonoBehaviour
     public PongBehavior pongBehavior;
     private List<string> ListPower1;
     private List<string> ListPower2;
+    private bool status;
 
 
     // Start is called before the first frame update
@@ -19,6 +20,14 @@ public class Powers : MonoBehaviour
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         pongBehavior = GameObject.Find("PongBehavior").GetComponent<PongBehavior>();
+        status = false;
+    }
+
+    private void Update() {
+        if(gameManager.game_as_start() != status){
+            powerColors();
+            status = !status;
+        }
     }
 
     public void handlePower(string buttonName){
@@ -95,5 +104,9 @@ public class Powers : MonoBehaviour
 
     public void clearHapticFeedback(CelluloAgent cellulo){
         cellulo.ClearHapticFeedback();
+    }
+
+    public void powerColors(){
+       // PaddlePlayer1.
     }
 }
