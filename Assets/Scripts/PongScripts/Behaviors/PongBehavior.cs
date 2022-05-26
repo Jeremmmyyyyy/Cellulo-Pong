@@ -34,4 +34,8 @@ public class PongBehavior : AgentBehaviour
         ContactPoint contactPoint = collision.contacts[0];
         direction = Vector3.Reflect(direction, contactPoint.normal);
     }
+
+    public void crazyBall(){
+
+    }
 }

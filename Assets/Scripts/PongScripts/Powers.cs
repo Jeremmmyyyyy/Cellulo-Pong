@@ -5,10 +5,11 @@ using System;
 
 public class Powers : MonoBehaviour
 {
-    public CelluloAgent PaddlePlayer1;
-    public CelluloAgent PaddlePlayer2;
-    public CelluloAgent Ball;
-    private GameManager gameManager;
+    private CelluloAgent PaddlePlayer1;
+    private CelluloAgent PaddlePlayer2;
+    private CelluloAgent Ball;
+    public GameManager gameManager;
+    public PongBehavior pongBehavior;
     private List<string> ListPower1;
     private List<string> ListPower2;
 
@@ -17,6 +18,7 @@ public class Powers : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        pongBehavior = GameObject.Find("PongBehavior").GetComponent<PongBehavior>();
     }
 
     public void handlePower(string buttonName){
@@ -72,6 +74,7 @@ public class Powers : MonoBehaviour
 
     private void crazyBall(){
         Debug.Log("crazy ball");
+        pongBehavior.crazyBall();
     }
 
     private void zoneEnlarger(){
