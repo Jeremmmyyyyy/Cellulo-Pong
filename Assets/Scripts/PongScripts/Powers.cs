@@ -5,9 +5,9 @@ using System;
 
 public class Powers : MonoBehaviour
 {
-    private CelluloAgent PaddlePlayer1;
-    private CelluloAgent PaddlePlayer2;
-    private CelluloAgent Ball;
+    public CelluloAgent PaddlePlayer1;
+    public CelluloAgent PaddlePlayer2;
+    public CelluloAgent Ball;
     public GameManager gameManager;
     public PongBehavior pongBehavior;
     private List<string> ListPower1;
