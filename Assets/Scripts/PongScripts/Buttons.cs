@@ -13,7 +13,7 @@ public class Buttons : MonoBehaviour
     public Button P1power1, P1power2, P1power3, P2power1, P2power2, P2power3;
 
     void Awake(){
-        powers = GameObject.Find("PowerManager").GetComponent<Powers>();
+        powers = GameObject.Find("Powers").GetComponent<Powers>();
     }
     void Start()
     {

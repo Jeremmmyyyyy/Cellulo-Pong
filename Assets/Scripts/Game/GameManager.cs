@@ -413,4 +413,12 @@ public class GameManager : MonoBehaviour
         }
         return false;
     } 
+
+    public List<string> getPower1(){
+        return powerP1;
+    }
+
+    public List<string> getPower2(){
+        return powerP2;
+    }
 }

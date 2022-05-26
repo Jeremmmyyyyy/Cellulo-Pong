@@ -9,6 +9,10 @@ public class Powers : MonoBehaviour
     public CelluloAgent PaddlePlayer2;
     public CelluloAgent Ball;
     private GameManager gameManager;
+    private List<string> ListPower1;
+    private List<string> ListPower2;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,13 +20,70 @@ public class Powers : MonoBehaviour
     }
 
     public void handlePower(string buttonName){
+        ListPower1 = gameManager.getPower1();
+        ListPower2 = gameManager.getPower2();
+
         string[] player_power = buttonName.Split(':');
         int power = Int32.Parse(player_power[1]);
-        Debug.Log(player_power[0]);
-        Debug.Log(player_power[1]);
-
+        power -= 1;
         
-        //TODO: get les listes du gamemanager et choisir la bonne fonction
+        string selectedPower;
+        if(player_power[0] == "P1"){
+            selectedPower = ListPower1[power];
+            powerSwitch(selectedPower, player_power[0]);
 
+        }else if(player_power[0] == "P2"){
+            selectedPower = ListPower2[power];
+            powerSwitch(selectedPower, player_power[0]);
+
+        }
+    }
+
+    private void powerSwitch(string selectedPower, string playerThatUsedThePower){
+        switch (selectedPower){
+            case "CRAZYBALL":
+                crazyBall();
+                break;
+            case "ZONEENLARGER":
+                zoneEnlarger();
+                break;
+            case "ZONESHRINKER":
+                zoneShrinker();
+                break;
+            case "FREEZEOPPONENT":
+                if (playerThatUsedThePower == "P1"){
+                    freezeOponent(PaddlePlayer2);
+                }else if(playerThatUsedThePower == "P2"){
+                    freezeOponent(PaddlePlayer1);
+                }
+                break;
+            case "SLIMEOPPONENT":
+                if (playerThatUsedThePower == "P1"){
+                    slimeOponent(PaddlePlayer2);
+                }else if(playerThatUsedThePower == "P2"){
+                    slimeOponent(PaddlePlayer1);
+                }                
+                break;
+            default:
+                Debug.Log("Problem with power choose");
+                break;
+        }
+    }
+
+    private void crazyBall(){
+        Debug.Log("crazy ball");
+    }
+
+    private void zoneEnlarger(){
+        Debug.Log("zone enlarger");
+    }
+    private void zoneShrinker(){
+        Debug.Log("zone shrinker");
+    }
+    private void freezeOponent(CelluloAgent playerToFreeze){
+        Debug.Log("freeze oponent");
+    }
+    private void slimeOponent(CelluloAgent playerToSlime){
+        Debug.Log("slime oponent");
     }
 }
