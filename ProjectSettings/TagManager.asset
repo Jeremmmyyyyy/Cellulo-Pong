@@ -9,6 +9,11 @@ TagManager:
   - Ghost
   - P2
   - Gem
+  - CRAZYBALL
+  - ZONEENLARGER
+  - ZONESHRINKER
+  - FREEZEOPPONENT
+  - SLIMEOPPONENT
   layers:
   - Default
   - TransparentFX

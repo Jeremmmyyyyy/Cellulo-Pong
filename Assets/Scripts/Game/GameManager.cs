@@ -17,9 +17,10 @@ public class GameManager : MonoBehaviour
     public CelluloAgent celluloPlayer2;
     public CelluloAgent pong;
     public CelluloAgent celluloPlayer1UI;
-    private CelluloAgent celluloPlayer2UI;
+    public CelluloAgent celluloPlayer2UI;
     private Toggle toggleMute;
-
+    public GameObject gameObjectAnimcheckSizeMenuP1;
+    public GameObject gameObjectAnimcheckSizeMenuP2;
 
     // Start is called before the first frame update
     private int scorePlayer1;
@@ -40,6 +41,8 @@ public class GameManager : MonoBehaviour
     private bool botIsGhost = false;
     private List<string> powerP1;
     private List<string> powerP2;
+    private Animator animCheckSizeMenuP1;
+    private Animator animCheckSizeMenuP2;
 
 
 
@@ -54,6 +57,11 @@ public class GameManager : MonoBehaviour
 
         isGemCollectedP1 = false;
         isGemCollectedP2 = false;
+        animCheckSizeMenuP1 = gameObjectAnimcheckSizeMenuP1.gameObject.GetComponent<Animator>();
+        animCheckSizeMenuP2 = gameObjectAnimcheckSizeMenuP2.gameObject.GetComponent<Animator>();
+        powerP1 = new List<string>();
+        powerP2 = new List<string>();
+
 
         clearHaptic();
     }
@@ -354,5 +362,55 @@ public class GameManager : MonoBehaviour
         }
 
     }
+    
+    public void setListPower(string tag, List<string> powerList)
+    {
+        if(tag == "P1")
+        {
+            powerP1 = powerList;
+        }
+        if(tag == "P2")
+        {
+            powerP2 = powerList;
+        }
+    }
 
+    public void testMenu()
+    {
+
+        Debug.Log("Couleur P1 : " + cellulo1Color);
+        Debug.Log("Couleur P2 : " + cellulo2Color);
+
+        Debug.Log("Power P1 : " + powerP1.Count);
+        foreach (string s in powerP1)
+        {
+            Debug.Log(s);
+        }
+
+        Debug.Log("Power P2 : " + powerP2.Count);
+        foreach (string s in powerP2)
+        {
+            Debug.Log(s);
+        }
+
+
+    }
+
+    public bool checkSizeMenu()
+    {
+
+        if (powerP1.Count < 3)
+        {
+            animCheckSizeMenuP1.SetTrigger("Start");
+        }
+        if (powerP2.Count < 3)
+        {
+            animCheckSizeMenuP2.SetTrigger("Start");
+        }
+        if((powerP1.Count == 3)&& (powerP2.Count == 3))
+        {
+            return true;
+        }
+        return false;
+    } 
 }

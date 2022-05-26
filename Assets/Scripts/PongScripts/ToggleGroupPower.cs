@@ -7,10 +7,15 @@ public class ToggleGroupPower : MonoBehaviour
 {
 
     List<Toggle> togglesSelected = new List<Toggle>();
+    private GameManager gameManager;
+    public Animation anim;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
+
     }
 
     // Update is called once per frame
@@ -28,6 +33,7 @@ public class ToggleGroupPower : MonoBehaviour
         }
         t.isOn = true;
         togglesSelected.Add(t);
+        GetSelectedToggle();
 
     }
     public void removeToggle(Toggle t)
@@ -38,26 +44,21 @@ public class ToggleGroupPower : MonoBehaviour
             t.isOn = false;
             togglesSelected.Remove(t);
         }
-
+        GetSelectedToggle();
 
     }
 
 
 
-    public void GetSelectedToggle()
+public void GetSelectedToggle()
     {
+        //Toggle[] toggleList = this.GetComponentsInChildren<Toggle>();
+        List<string> tagList = new List<string>();
+        foreach (Toggle t in togglesSelected)
+        {
 
-        Debug.Log("ALL : \n");
-        Toggle[] toggleList = this.GetComponentsInChildren<Toggle>();
-        foreach (Toggle toggle in toggleList)
-        {
-            Debug.Log(toggle +" " + toggle.isOn);
+            tagList.Add(t.tag);
         }
-        Debug.Log("\n\n LISTE : \n");
-        foreach (Toggle toggle in togglesSelected)
-        {
-            Debug.Log(toggle + " " + toggle.isOn);
-        }
+        gameManager.setListPower(this.tag, tagList);
     }
-    
 }
