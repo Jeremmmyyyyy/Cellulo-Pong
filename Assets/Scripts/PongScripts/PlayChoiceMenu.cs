@@ -21,6 +21,8 @@ public class PlayChoiceMenu : MonoBehaviour
         if (gameManager.checkSizeMenu())
         {
             canvaChoice.SetActive(false);
+            gameManager.gameStatus(true);
         }
+        
     }
 }

@@ -88,5 +88,12 @@ public class Powers : MonoBehaviour
     }
     private void slimeOponent(CelluloAgent playerToSlime){
         Debug.Log("slime oponent");
+        playerToSlime.MoveOnMud();
+        Invoke("clearHapticFeedback", 10);
+    }
+
+
+    public void clearHapticFeedback(CelluloAgent cellulo){
+        cellulo.ClearHapticFeedback();
     }
 }

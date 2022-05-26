@@ -8,6 +8,7 @@ public class PongBehavior : AgentBehaviour
     private Vector3 direction;
     private bool isWallCollided;
     static bool changeBallDirection;
+    public GameManager gameManager;
 
     // Start is called before the first frame update
     private Vector3 startBallMovement(){
@@ -23,7 +24,7 @@ public class PongBehavior : AgentBehaviour
     void Start()
     {
         direction = startBallMovement();
-        //TODO: ajouter le moveonice 
+        agent.MoveOnIce();
     }
     void Update()
     {
@@ -32,14 +33,18 @@ public class PongBehavior : AgentBehaviour
     public override Steering GetSteering()
     {
         Steering steering = new Steering();
-        if(changeBallDirection){
-            Debug.Log(changeBallDirection);
-            Vector3 newDir = randomOpposedDirection(direction);
-            direction = newDir;
-            changeBallDirection = false;
-        }else{
-            steering.linear = direction * agent.maxAccel;
-            steering.linear = this.transform.parent.TransformDirection(Vector3.ClampMagnitude(steering.linear, (agent.maxAccel + accelAdjust)));
+        if(gameManager.game_as_start()){
+            
+            if(changeBallDirection){
+                Debug.Log(changeBallDirection);
+                Vector3 newDir = randomOpposedDirection(direction);
+                direction = newDir;
+                changeBallDirection = false;
+            }else{
+                steering.linear = direction * agent.maxAccel;
+                steering.linear = this.transform.parent.TransformDirection(Vector3.ClampMagnitude(steering.linear, (agent.maxAccel + accelAdjust)));
+            }
+        
         }
         return steering;
     }

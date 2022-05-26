@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     private int scorePlayer1;
     private int scorePlayer2;
-    private bool gameAsStart = false;
+    private bool gameAsStart;
     private Color winnerCol;
     private Color cellulo1Color;
     private Color cellulo2Color;
@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
         animCheckSizeMenuP2 = gameObjectAnimcheckSizeMenuP2.gameObject.GetComponent<Animator>();
         powerP1 = new List<string>();
         powerP2 = new List<string>();
+        gameAsStart = false;
 
 
         clearHaptic();
