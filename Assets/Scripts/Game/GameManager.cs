@@ -11,8 +11,8 @@ public class GameManager : MonoBehaviour
 
     //PUBLIC METHODS
     //TODO: mettre en public si on en a besoin
-    private TextMeshProUGUI score1;
-    private TextMeshProUGUI score2;
+    public TextMeshProUGUI score1;
+    public TextMeshProUGUI score2;
     public CelluloAgent celluloPlayer1;
     public CelluloAgent celluloPlayer2;
     public CelluloAgent pong;
@@ -76,9 +76,9 @@ public class GameManager : MonoBehaviour
     void updateScore(){
         if(score1 != null && score2 != null){
             score1.text = scorePlayer1.ToString("00");
-            score1.color = cellulo1Color;
+            //score1.color = cellulo1Color;
             score2.text = scorePlayer2.ToString("00");
-            score2.color = cellulo2Color;
+            //score2.color = cellulo2Color;
         }else if(printDebugScore){
             Debug.Log("GAMEMANGER: change score to public if you want to use it");
             printDebugScore = false;
