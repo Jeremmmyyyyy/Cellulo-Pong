@@ -6,6 +6,11 @@ public class PongBehavior : AgentBehaviour
 {
     public float accelAdjust = 2.0f;
     private Vector3 direction;
+    private bool isWallCollided;
+    //private Rigidbody rigidBody;
+    // private GameObject leftWall;
+    // private GameObject rightWall;
+    // private GameObject ball;
     // Start is called before the first frame update
     private Vector3 startBallMovement(){
         float random = Random.Range(0, 2);
@@ -16,10 +21,20 @@ public class PongBehavior : AgentBehaviour
         }
     }
 
+
     void Start()
     {
         direction = startBallMovement();
+        // leftWall = GameObject.FindGameObjectsWithTag("LWall")[0];
+        // rightWall = GameObject.FindGameObjectsWithTag("RWall")[0];
+        // ball = GameObject.FindGameObjectsWithTag("Ball")[0];
+
+        //Physics.IgnoreCollision(leftWall.GetComponent<Collider>(), ball.GetComponent<Collider>());
+        //Physics.IgnoreCollision(rightWall.GetComponent<Collider>(), ball.GetComponent<Collider>());
         //TODO: ajouter le moveonice 
+    }
+    void Update()
+    {
     }
     //Called at each frame of the game
     public override Steering GetSteering()
@@ -34,6 +49,15 @@ public class PongBehavior : AgentBehaviour
         ContactPoint contactPoint = collision.contacts[0];
         direction = Vector3.Reflect(direction, contactPoint.normal);
     }
+
+    // private void OnTriggerEnter(Collider other) {
+    //     if (other.tag == "LWall" || other.tag == "RWall")
+    //     {
+    //         Debug.Log("tada colide");
+    //         Physics.IgnoreCollision(ball.GetComponent<Collider>(), leftWall.GetComponent<Collider>(), false);
+    //         Physics.IgnoreCollision(ball.GetComponent<Collider>(), rightWall.GetComponent<Collider>(), false);
+    //     }
+    // }
 
     public void crazyBall(){
 
