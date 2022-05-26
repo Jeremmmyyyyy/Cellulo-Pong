@@ -7,11 +7,8 @@ public class PongBehavior : AgentBehaviour
     public float accelAdjust = 2.0f;
     private Vector3 direction;
     private bool isWallCollided;
-    private bool stopBall;
-    //private Rigidbody rigidBody;
-    // private GameObject leftWall;
-    // private GameObject rightWall;
-    // private GameObject ball;
+    static bool changeBallDirection;
+
     // Start is called before the first frame update
     private Vector3 startBallMovement(){
         float random = Random.Range(0, 2);
@@ -26,12 +23,6 @@ public class PongBehavior : AgentBehaviour
     void Start()
     {
         direction = startBallMovement();
-        // leftWall = GameObject.FindGameObjectsWithTag("LWall")[0];
-        // rightWall = GameObject.FindGameObjectsWithTag("RWall")[0];
-        // ball = GameObject.FindGameObjectsWithTag("Ball")[0];
-
-        //Physics.IgnoreCollision(leftWall.GetComponent<Collider>(), ball.GetComponent<Collider>());
-        //Physics.IgnoreCollision(rightWall.GetComponent<Collider>(), ball.GetComponent<Collider>());
         //TODO: ajouter le moveonice 
     }
     void Update()
@@ -41,9 +32,11 @@ public class PongBehavior : AgentBehaviour
     public override Steering GetSteering()
     {
         Steering steering = new Steering();
-
-        if(stopBall){
-            steering.linear = new Vector3(0, 0, 0);
+        if(changeBallDirection){
+            Debug.Log(changeBallDirection);
+            Vector3 newDir = randomOpposedDirection(direction);
+            direction = newDir;
+            changeBallDirection = false;
         }else{
             steering.linear = direction * agent.maxAccel;
             steering.linear = this.transform.parent.TransformDirection(Vector3.ClampMagnitude(steering.linear, (agent.maxAccel + accelAdjust)));
@@ -56,22 +49,14 @@ public class PongBehavior : AgentBehaviour
         direction = Vector3.Reflect(direction, contactPoint.normal);
     }
 
-    // private void OnTriggerEnter(Collider other) {
-    //     if (other.tag == "LWall" || other.tag == "RWall")
-    //     {
-    //         Debug.Log("tada colide");
-    //         Physics.IgnoreCollision(ball.GetComponent<Collider>(), leftWall.GetComponent<Collider>(), false);
-    //         Physics.IgnoreCollision(ball.GetComponent<Collider>(), rightWall.GetComponent<Collider>(), false);
-    //     }
-    // }
-
     public void crazyBall(){
-        stopBall = true;
-        Invoke("setBoolFalse", 5.0f);
+        changeBallDirection = true;
     }
 
-    public void setBoolFalse(){
-        stopBall = false;
+    public Vector3 randomOpposedDirection(Vector3 vect){
+        float random = Random.Range(-100, 100);
+        float z = random / 100.0f;
+        return new Vector3(-vect.x, 0, z);
     }
-    
+
 }
