@@ -10,6 +10,7 @@ public class Powers : MonoBehaviour
     public CelluloAgent Ball;
     public GameManager gameManager;
     public PongBehavior pongBehavior;
+    public ZoneSwitcher zoneSwitcher;
     private List<string> ListPower1;
     private List<string> ListPower2;
     private bool status;
@@ -22,6 +23,7 @@ public class Powers : MonoBehaviour
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         pongBehavior = GameObject.Find("PongBehavior").GetComponent<PongBehavior>();
+        zoneSwitcher = GameObject.Find("ZoneSwitcher").GetComponent<ZoneSwitcher>();
         status = false;
 
         colorPowerList = new Dictionary<string, Color>();
@@ -97,9 +99,11 @@ public class Powers : MonoBehaviour
 
     private void zoneEnlarger(){
         Debug.Log("zone enlarger");
+        zoneSwitcher.zoneEnlarger();
     }
     private void zoneShrinker(){
         Debug.Log("zone shrinker");
+        zoneSwitcher.zoneShrinker();
     }
     private void freezeOponent(CelluloAgent playerToFreeze){
         Debug.Log("freeze oponent");
