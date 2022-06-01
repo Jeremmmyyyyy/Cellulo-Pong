@@ -9,7 +9,6 @@ public class SettingsMainMenuAnim : MonoBehaviour
     public Animator m_Animator;
     public Button yourButton;
     public Button yourButtonExit;
-    bool isOpen = false;
 
     public GameObject settings;
     public GameObject rules;
@@ -28,8 +27,6 @@ public class SettingsMainMenuAnim : MonoBehaviour
     void TaskOnClick()
     {
         m_Animator.SetTrigger("IsOpen");
-
-        isOpen = true;
     }
     void TaskOnClickExit()
     {

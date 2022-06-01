@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        volume = 3;
+        volume = 0;
    
         toggleP1Selected = false;
         toggleP2Selected = false;
@@ -446,6 +446,10 @@ public class GameManager : MonoBehaviour
         {
             animVolume.SetInteger("Volume", volume);
         }
+    }
+    public void initializeVolumeMenuOnExit()
+    {
+        animVolume.SetInteger("Volume", 0);
     }
 
 }
