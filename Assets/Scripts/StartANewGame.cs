@@ -14,6 +14,6 @@ public class StartANewGame : MonoBehaviour
 
     public void begin_game()
     {
-        gameManager.gameStatus(true);
+        gameManager.gameStatus(false);
     }
 }

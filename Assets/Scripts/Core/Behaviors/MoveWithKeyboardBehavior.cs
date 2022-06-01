@@ -57,7 +57,7 @@ public class MoveWithKeyboardBehavior : AgentBehaviour
         changeMovingBehavior();
         if (wasdLongPressed && arrowsLongPressed)
         {
-            gameManager.gameStatus(true);
+            //gameManager.gameStatus(false);
         }
         //ne peut bouger que si la partie a commencer
         if (gameManager.game_as_start())

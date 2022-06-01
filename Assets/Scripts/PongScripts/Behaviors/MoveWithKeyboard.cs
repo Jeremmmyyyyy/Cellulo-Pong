@@ -12,13 +12,12 @@ public class MoveWithKeyboard : AgentBehaviour
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        gameManager.gameStatus(false);
         gameManager.setPlayer1IsArrowTo(false);
     }
 
     public override Steering GetSteering()
     {
-        gameManager.gameStatus(true);
+        
         //ne peut bouger que si la partie a commencer
         if (gameManager.game_as_start())
         {

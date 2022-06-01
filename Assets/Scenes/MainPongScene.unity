@@ -5043,7 +5043,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &557849197
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9148,6 +9148,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   accelAdjust: 2
+  gameManager: {fileID: 0}
 --- !u!114 &1079450773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13497,6 +13498,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   accelAdjust: 10
+  gameManager: {fileID: 531986158}
 --- !u!65 &1669806701
 BoxCollider:
   m_ObjectHideFlags: 0
