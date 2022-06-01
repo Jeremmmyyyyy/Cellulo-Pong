@@ -7,21 +7,46 @@ public class MoveWithKeyboard : AgentBehaviour
     private GameManager gameManager;
     float horizontal;
     float vertical;
+    public Powers powers;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        powers = GameObject.Find("Powers").GetComponent<Powers>();
         gameManager.setPlayer1IsArrowTo(false);
+    }
+
+    public override void OnCelluloLongTouch(int key)
+    {
+        base.OnCelluloLongTouch(key);
+        if (gameManager.getPlayerCommand(gameObject.tag) == "Paddle1")
+        {
+            if (key == 0 || key == 2 || key == 4)
+            {
+                Debug.Log(agent.GetLedColor(key));
+                powers.buttonsRealCellulo(agent.GetLedColor(key), "P1");
+            }
+
+        }
+        else if (gameManager.getPlayerCommand(gameObject.tag) == "Paddle2")
+        {
+
+            if (key == 0 || key == 2 || key == 4)
+            {
+                Debug.Log(agent.GetLedColor(key));
+                powers.buttonsRealCellulo(agent.GetLedColor(key), "P2");
+            }
+        }
     }
 
     public override Steering GetSteering()
     {
-        
+
         //ne peut bouger que si la partie a commencer
         if (gameManager.game_as_start())
         {
-            if (gameManager.getPlayerCommand(gameObject.tag)=="wasd")
+            if (gameManager.getPlayerCommand(gameObject.tag) == "wasd")
             {
                 horizontal = Input.GetAxis("Horizontal2");
                 vertical = Input.GetAxis("Vertical2");
