@@ -8,19 +8,20 @@ public class ZoneSwitcher : MonoBehaviour
     private static GameObject[] zonesObjectList;
     //public Button yourButton;
     private int i;
+    public GameObject BackZone;
+    public GameObject MidZone;
+    public GameObject CenterZone;
     // Start is called before the first frame update
     void Start()
     {
         string startZone = zones[0];
         i = 0;
         
-        for (int t = 0; t < 3; t++) 
-        {
-            zonesObjectList[t] = GameObject.Find(zones[t]);
-        }
-        zonesObjectList[0].SetActive(true);
-        zonesObjectList[1].SetActive(false);
-        zonesObjectList[2].SetActive(false);
+        //zones = new List<GameObject> {BackZone, MidZone, CenterZone};
+        zonesObjectList = new GameObject[] {BackZone, MidZone, CenterZone};
+        BackZone.SetActive(true);
+        MidZone.SetActive(false);
+        CenterZone.SetActive(false);
         //Button btn = yourButton.GetComponent<Button>();
         //btn.onClick.AddListener(TaskOnClick);
     }
