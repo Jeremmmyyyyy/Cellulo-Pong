@@ -14,7 +14,7 @@ public class Powers : MonoBehaviour
     private List<string> ListPower1;
     private List<string> ListPower2;
     private bool status;
-
+    private CelluloAgent currentPlayer;
     private Dictionary<string, Color> colorPowerList;
 
 
@@ -126,19 +126,34 @@ public class Powers : MonoBehaviour
     {
         Debug.Log("freeze oponent");
         playerToFreeze.SetHapticBackdriveAssist(-1, -1, -1);
-        Invoke("clearHapticFeedback", 5);
+        if(playerToFreeze.tag == "Paddle1"){
+            Invoke("clearHapticFeedbackPaddle1", 5f);
+
+        }else if(playerToFreeze.tag == "Paddle2"){
+            Invoke("clearHapticFeedbackPaddle2", 5f);
+        } 
     }
     private void slimeOponent(CelluloAgent playerToSlime)
     {
         Debug.Log("slime oponent");
         playerToSlime.MoveOnMud();
-        Invoke("clearHapticFeedback", 10);
+        if(playerToSlime.tag == "Paddle1"){
+            Invoke("clearHapticFeedbackPaddle1", 10f);
+
+        }else if(playerToSlime.tag == "Paddle2"){
+            Invoke("clearHapticFeedbackPaddle2", 10f);
+        }
     }
 
 
-    public void clearHapticFeedback(CelluloAgent cellulo)
+    void clearHapticFeedbackPaddle1()
     {
-        cellulo.ClearHapticFeedback();
+        PaddlePlayer1.ClearHapticFeedback();
+    }
+
+    void clearHapticFeedbackPaddle2()
+    {
+        PaddlePlayer2.ClearHapticFeedback();
     }
 
     public void powerColors()
