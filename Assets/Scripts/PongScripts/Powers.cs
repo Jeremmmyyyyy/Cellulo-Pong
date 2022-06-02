@@ -205,4 +205,9 @@ public class Powers : MonoBehaviour
         }
         return null;
     }
+
+    public Color getColorButton(string s)
+    {
+        return colorPowerList[s];
+    }
 }
