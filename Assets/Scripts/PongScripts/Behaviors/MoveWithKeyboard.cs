@@ -20,7 +20,7 @@ public class MoveWithKeyboard : AgentBehaviour
     public override void OnCelluloLongTouch(int key)
     {
         base.OnCelluloLongTouch(key);
-        if (gameManager.getPlayerCommand(gameObject.tag) == "Paddle1")
+        if (agent.tag == "Paddle1")
         {
             if (key == 0 || key == 2 || key == 4)
             {
@@ -29,7 +29,7 @@ public class MoveWithKeyboard : AgentBehaviour
             }
 
         }
-        else if (gameManager.getPlayerCommand(gameObject.tag) == "Paddle2")
+        else if (agent.tag == "Paddle2")
         {
 
             if (key == 0 || key == 2 || key == 4)

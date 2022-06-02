@@ -26,14 +26,14 @@ TagManager:
   - UI
   - 
   - PostProcessing
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Back Zones
+  - Mid Zones
+  - Center Zones
+  - Ball
+  - PaddleL
+  - PaddleR
+  - Right Goal
+  - Left Goal
   - 
   - 
   - 
