@@ -76,6 +76,7 @@ public class Buttons : MonoBehaviour
             Debug.Log(i);
             var colors = b.colors;
             colors.normalColor = powers.getColorButton(gameManager.getPower1()[i]);
+            Debug.Log(colors.normalColor);
             TextMeshProUGUI bText = b.GetComponentInChildren<TextMeshProUGUI>();
             bText.text = gameManager.getPower1()[i];
             i++;
