@@ -25,7 +25,7 @@ public class MoveWithKeyboard : AgentBehaviour
         {
             if (key == 0 || key == 2 || key == 4)
             {
-                powers.buttonsRealCellulo(agent.GetLedColor(key), "P1");
+                powers.buttonsRealCellulo(key, "P1");
             }
 
         }
@@ -34,7 +34,7 @@ public class MoveWithKeyboard : AgentBehaviour
 
             if (key == 0 || key == 2 || key == 4)
             {
-                powers.buttonsRealCellulo(agent.GetLedColor(key), "P2");
+                powers.buttonsRealCellulo(key, "P2");
             }
         }
     }
