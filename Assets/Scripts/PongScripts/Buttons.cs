@@ -69,25 +69,22 @@ public class Buttons : MonoBehaviour
 
     private void listColorButton()
     {
-        Debug.Log("JE RENTRE");
         int i = 0;
         foreach (Button b in buttonList1)
         {
-            Debug.Log(i);
-            var colors = b.colors;
-            colors.normalColor = powers.getColorButton(gameManager.getPower1()[i]);
-            Debug.Log(colors.normalColor);
+            b.GetComponent<Image>().color = powers.getColorButton(gameManager.getPower1()[i]);
             TextMeshProUGUI bText = b.GetComponentInChildren<TextMeshProUGUI>();
-            bText.text = gameManager.getPower1()[i];
+            bText.text = powers.getStringFromTag(gameManager.getPower1()[i]);
+            bText.fontSize -= 5;
             i++;
         }
         i = 0;
         foreach (Button b in buttonList2)
         {
-            var colors = b.colors;
-            colors.normalColor = powers.getColorButton(gameManager.getPower2()[i]);
+            b.GetComponent<Image>().color = powers.getColorButton(gameManager.getPower2()[i]);
             TextMeshProUGUI bText = b.GetComponentInChildren<TextMeshProUGUI>();
-            bText.text = gameManager.getPower2()[i];
+            bText.text = powers.getStringFromTag(gameManager.getPower2()[i]);
+            bText.fontSize -= 5;
             i++;
         }
     }

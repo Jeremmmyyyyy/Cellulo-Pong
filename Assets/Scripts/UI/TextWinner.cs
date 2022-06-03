@@ -6,15 +6,15 @@ using TMPro;
 
 public class TextWinner : MonoBehaviour
 {
-    private TextMeshProUGUI text;
+    public TextMeshProUGUI text;
     private GameManager gameManager;
     // Start is called before the first frame update
     //va donner le text et la couleur a mettre en fonction du winner
     void Start()
     {
-        text = GetComponent<TextMeshProUGUI>();
+        //text = GetComponent<TextMeshProUGUI>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        text.text = gameManager.winnerIs();
+        text.text = "PLAYER 3";//gameManager.winnerIs();
         text.color = gameManager.winnerColor();
 
     }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SquareVolumeScript : MonoBehaviour
 {
@@ -9,14 +10,30 @@ public class SquareVolumeScript : MonoBehaviour
     public Button plusButton;
     public Button moinsButton;
     private GameManager gameManager;
+    private AudioManager AM;
+    private bool menuMode;
 
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        int idxScene = SceneManager.GetActiveScene().buildIndex;
+        if (idxScene != 0)
+        {
+            gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
+        }
+        AM = GameObject.Find("Audio Source").GetComponent<AudioManager>();
+
+        if (gameManager == null)
+        {
+            menuMode = true;
+        }
+        else
+        {
+            menuMode = false;
+        }
         Button btnplus = plusButton.GetComponent<Button>();
         Button btnmoins = moinsButton.GetComponent<Button>();
-
         btnplus.onClick.AddListener(TaskOnClickPlus);
         btnmoins.onClick.AddListener(TaskOnClickMoins);
     }
@@ -24,19 +41,30 @@ public class SquareVolumeScript : MonoBehaviour
     // Update is called once per frame
     void TaskOnClickPlus()
     {
-        
-        if (gameManager.getVolume() < 6)
+        if (!menuMode &&gameManager.getVolume() < 6)
         {
             gameManager.setVolume(gameManager.getVolume() + 1);
             m_Animator.SetInteger("Volume", gameManager.getVolume());
         }
+        else
+        {
+            AM.VolumeUp();
+            m_Animator.SetInteger("Volume", AM.getVolume());
+
+        }
     }
     void TaskOnClickMoins()
     {
-        if (gameManager.getVolume() > 0)
+        if (!menuMode && gameManager.getVolume() > 0)
         {
             gameManager.setVolume(gameManager.getVolume() - 1);
             m_Animator.SetInteger("Volume", gameManager.getVolume());
+        }
+        else
+        {
+            AM.VolumeDown();
+            m_Animator.SetInteger("Volume", AM.getVolume());
+
         }
     }
 }
