@@ -126,10 +126,10 @@ public class Powers : MonoBehaviour
     {
         Debug.Log("freeze oponent");
         playerToFreeze.SetHapticBackdriveAssist(-1, -1, -1);
-        if(playerToFreeze.tag == "Paddle1"){
+        if(playerToFreeze.tag == "P1"){
             Invoke("clearHapticFeedbackPaddle1", 5f);
 
-        }else if(playerToFreeze.tag == "Paddle2"){
+        }else if(playerToFreeze.tag == "P2"){
             Invoke("clearHapticFeedbackPaddle2", 5f);
         } 
     }
@@ -137,10 +137,10 @@ public class Powers : MonoBehaviour
     {
         Debug.Log("slime oponent");
         playerToSlime.MoveOnMud();
-        if(playerToSlime.tag == "Paddle1"){
+        if(playerToSlime.tag == "P1"){
             Invoke("clearHapticFeedbackPaddle1", 10f);
 
-        }else if(playerToSlime.tag == "Paddle2"){
+        }else if(playerToSlime.tag == "P2"){
             Invoke("clearHapticFeedbackPaddle2", 10f);
         }
     }
@@ -206,6 +206,8 @@ public class Powers : MonoBehaviour
 
     public void buttonsRealCellulo(Color color, string player)
     {
+        Debug.Log(color);
+        Debug.Log(findKey(color));
         powerSwitch(findKey(color), player);
     }
 
