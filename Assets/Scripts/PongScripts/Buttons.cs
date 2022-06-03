@@ -85,6 +85,7 @@ public class Buttons : MonoBehaviour
         foreach (Button b in buttonList2)
         {
             var colors = b.colors;
+            b.GetComponent<Image>().color = Color.red;
             colors.normalColor = powers.getColorButton(gameManager.getPower2()[i]);
             TextMeshProUGUI bText = b.GetComponentInChildren<TextMeshProUGUI>();
             bText.text = gameManager.getPower2()[i];
