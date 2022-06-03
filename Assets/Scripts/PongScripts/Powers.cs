@@ -111,10 +111,12 @@ public class Powers : MonoBehaviour
             case "FREEZEOPPONENT":
                 if (playerThatUsedThePower == "P1")
                 {
+                    Debug.Log("freeze oponent called on player 2");
                     freezeOponent(PaddlePlayer2);
                 }
                 else if (playerThatUsedThePower == "P2")
                 {
+                    Debug.Log("freeze oponent called on player 1");
                     freezeOponent(PaddlePlayer1);
                 }
                 break;
