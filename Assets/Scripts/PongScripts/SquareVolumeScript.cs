@@ -12,10 +12,12 @@ public class SquareVolumeScript : MonoBehaviour
     private GameManager gameManager;
     private AudioManager AM;
     private bool menuMode;
+    private bool checkBool;
 
     // Start is called before the first frame update
     void Start()
     {
+        checkBool = false;
         int idxScene = SceneManager.GetActiveScene().buildIndex;
         if (idxScene != 0)
         {
@@ -41,7 +43,7 @@ public class SquareVolumeScript : MonoBehaviour
     // Update is called once per frame
     void TaskOnClickPlus()
     {
-        if (!menuMode &&gameManager.getVolume() < 6)
+        if (!menuMode && gameManager.getVolume() < 6)
         {
             gameManager.setVolume(gameManager.getVolume() + 1);
             m_Animator.SetInteger("Volume", gameManager.getVolume());
@@ -57,14 +59,25 @@ public class SquareVolumeScript : MonoBehaviour
     {
         if (!menuMode && gameManager.getVolume() > 0)
         {
+            
             gameManager.setVolume(gameManager.getVolume() - 1);
             m_Animator.SetInteger("Volume", gameManager.getVolume());
+
         }
         else
         {
+            Debug.Log("volume+" + AM.getVolume());
             AM.VolumeDown();
             m_Animator.SetInteger("Volume", AM.getVolume());
-
+            Debug.Log("volume+APRES" + AM.getVolume());
+        }
+    }
+    void Update()
+    {
+        if (m_Animator.isActiveAndEnabled && checkBool == false)
+        {
+            m_Animator.SetInteger("Volume", AM.getVolume());
+            checkBool = true;
         }
     }
 }
