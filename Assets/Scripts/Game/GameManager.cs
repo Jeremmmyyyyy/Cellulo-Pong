@@ -38,7 +38,6 @@ public class GameManager : MonoBehaviour
     private bool gameIsMute;
     private bool isGemCollectedP1;
     private bool isGemCollectedP2;
-    private bool printDebugScore = true;
     private bool botIsGhost = false;
     private List<string> powerP1;
     private List<string> powerP2;
@@ -46,6 +45,12 @@ public class GameManager : MonoBehaviour
     private Animator animCheckSizeMenuP2;
     private Animator animVolume;
     private int volume;
+    private int maxScore = 3;
+    public GameObject canvasEnd;
+    public TextMeshProUGUI textWinner;
+    private bool gameIsFinish;
+    public TextMeshProUGUI finalScoreP1;
+    public TextMeshProUGUI finalScoreP2;
 
 
     void Awake()
@@ -55,8 +60,15 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+
+        Color textcolorP1 = finalScoreP1.color;
+        textcolorP1.a = 1;
+        Color textcolorP2 = finalScoreP2.color;
+        textcolorP2.a = 1;
+
         volume = 0;
-   
+        gameIsFinish = false;
+
         toggleP1Selected = false;
         toggleP2Selected = false;
         scorePlayer1 = 0;
@@ -71,9 +83,15 @@ public class GameManager : MonoBehaviour
         powerP1 = new List<string>();
         powerP2 = new List<string>();
         gameAsStart = false;
-
+        celluloPlayer1UI.GetComponent<Transform>().localScale = new Vector3(7,7,7);
+        celluloPlayer2UI.GetComponent<Transform>().localScale = new Vector3(7,7,7);
 
         clearHaptic();
+    }
+    public IEnumerator ThisWillBeExecutedOnTheMainThread()
+    {
+        Debug.Log("This is executed from the main thread");
+        yield return null;
     }
 
     // Update is called once per frame
@@ -81,6 +99,14 @@ public class GameManager : MonoBehaviour
     {
         updateScore();
         toggleUpdate();
+        if (gameIsFinish)
+        {
+            canvasEnd.SetActive(true);
+            textWinner.SetText(winnerIs());
+            textWinner.color = winnerColor();
+            finalScoreP1.text = scorePlayer1.ToString("00");
+            finalScoreP2.text = scorePlayer2.ToString("00");
+        }
     }
 
     void updateScore(){
@@ -89,9 +115,13 @@ public class GameManager : MonoBehaviour
             //score1.color = cellulo1Color;
             score2.text = scorePlayer2.ToString("00");
             //score2.color = cellulo2Color;
-        }else if(printDebugScore){
-            Debug.Log("GAMEMANGER: change score to public if you want to use it");
-            printDebugScore = false;
+        }
+        if(scorePlayer1 == maxScore || scorePlayer2 == maxScore)
+        {
+            gameIsFinish = true;
+            gameStatus(false);
+
+
         }
     }
 
@@ -174,7 +204,6 @@ public class GameManager : MonoBehaviour
         }
 
     }
-    //
    
     public void collectGem(string tag) 
     {
@@ -215,7 +244,17 @@ public class GameManager : MonoBehaviour
             return scorePlayer2;
         }
     }
-
+    public int getScoreWithTag(string tag)
+    {
+        if (tag == "P1")
+        {
+            return scorePlayer1;
+        }
+        else
+        {
+            return scorePlayer2;
+        }
+    }
     public string winnerIs()
     {
 
@@ -452,5 +491,13 @@ public class GameManager : MonoBehaviour
     {
         animVolume.SetInteger("Volume", 0);
     }
+    public bool gameIsOver()
+    {
+        return gameIsFinish;
+    }
 
+    public Color getColor(string tag)
+    {
+        return tag == "P1" ? cellulo1Color : cellulo2Color;
+    }
 }

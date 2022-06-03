@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
 public class Powers : MonoBehaviour
 {
     public CelluloAgent PaddlePlayer1;
@@ -16,6 +17,21 @@ public class Powers : MonoBehaviour
     private bool status;
     private CelluloAgent currentPlayer;
     private Dictionary<string, Color> colorPowerList;
+    private Dictionary<string, string> tagToStringDic;
+
+
+    private Color32 c1 = new Color32(255, 190, 11, 255);
+    private Color32 c2 = new Color32(251, 86, 7, 255);
+    private Color32 c3 = new Color32(255, 0, 110, 255);
+    private Color32 c4 = new Color32(131, 56, 236, 255);
+    private Color32 c5 = new Color32(58, 134, 255, 255);
+
+    private string crazyBallText = "CRAZY BALL";
+    private string zoneEnlargerText = "ZONE ENLARGER";
+    private string zoneShrinkerText = "ZONE SHRINKER";
+    private string freezeOpponentText = "FREEZE OPPONENT";
+    private string slimeOpponentText = "SLIM OPPONENT";
+
 
 
     // Start is called before the first frame update
@@ -27,11 +43,20 @@ public class Powers : MonoBehaviour
         status = false;
 
         colorPowerList = new Dictionary<string, Color>();
-        colorPowerList.Add("CRAZYBALL", Color.magenta);
-        colorPowerList.Add("ZONEENLARGER", Color.red);
-        colorPowerList.Add("ZONESHRINKER", Color.blue);
-        colorPowerList.Add("FREEZEOPPONENT", Color.cyan);
-        colorPowerList.Add("SLIMEOPPONENT", Color.green);
+        colorPowerList.Add("CRAZYBALL", c1);
+        colorPowerList.Add("ZONEENLARGER", c2);
+        colorPowerList.Add("ZONESHRINKER", c3);
+        colorPowerList.Add("FREEZEOPPONENT", c4);
+        colorPowerList.Add("SLIMEOPPONENT", c5);
+
+        tagToStringDic = new Dictionary<string, string>();
+        tagToStringDic.Add("CRAZYBALL", crazyBallText);
+        tagToStringDic.Add("ZONEENLARGER", zoneEnlargerText);
+        tagToStringDic.Add("ZONESHRINKER", zoneShrinkerText);
+        tagToStringDic.Add("FREEZEOPPONENT", freezeOpponentText);
+        tagToStringDic.Add("SLIMEOPPONENT", slimeOpponentText);
+
+
     }
 
     private void Update()
@@ -226,5 +251,10 @@ public class Powers : MonoBehaviour
     public Color getColorButton(string s)
     {
         return colorPowerList[s];
+    }
+
+    public string getStringFromTag(string s)
+    {
+        return tagToStringDic[s];
     }
 }
