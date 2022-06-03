@@ -15,29 +15,36 @@ public class MoveWithKeyboard : AgentBehaviour
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         powers = GameObject.Find("Powers").GetComponent<Powers>();
         gameManager.setPlayer1IsArrowTo(false);
+        agent.ClearHapticFeedback();
     }
 
     public override void OnCelluloLongTouch(int key)
     {
         base.OnCelluloLongTouch(key);
-        if (agent.tag == "Paddle1")
+        if (agent.tag == "P1")
         {
             if (key == 0 || key == 2 || key == 4)
             {
-                Debug.Log(agent.GetLedColor(key));
-                powers.buttonsRealCellulo(agent.GetLedColor(key), "P1");
+                powers.buttonsRealCellulo(key, "P1");
             }
 
         }
-        else if (agent.tag == "Paddle2")
+        else if (agent.tag == "P2")
         {
 
             if (key == 0 || key == 2 || key == 4)
             {
-                Debug.Log(agent.GetLedColor(key));
-                powers.buttonsRealCellulo(agent.GetLedColor(key), "P2");
+                powers.buttonsRealCellulo(key, "P2");
             }
         }
+    }
+
+    private void OnCollisionEnter(Collision other) {
+        agent.ActivateDirectionalHapticFeedback();
+    }
+
+    private void OnCollisionExit(Collision other) {
+        agent.DeActivateDirectionalHapticFeedback();
     }
 
     public override Steering GetSteering()

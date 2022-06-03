@@ -16,8 +16,10 @@ public class Powers : MonoBehaviour
     private List<string> ListPower2;
     private bool status;
     private CelluloAgent currentPlayer;
-    private Dictionary<string, Color> colorPowerList;
+    private Dictionary<string, Color32> colorPowerList;
     private Dictionary<string, string> tagToStringDic;
+    private Dictionary<int, string> keyColorCellulo1;
+    private Dictionary<int, string> keyColorCellulo2;
 
 
     private Color32 c1 = new Color32(255, 190, 11, 255);
@@ -33,7 +35,6 @@ public class Powers : MonoBehaviour
     private string slimeOpponentText = "SLIM OPPONENT";
 
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +43,7 @@ public class Powers : MonoBehaviour
         zoneSwitcher = GameObject.Find("ZoneSwitcher").GetComponent<ZoneSwitcher>();
         status = false;
 
-        colorPowerList = new Dictionary<string, Color>();
+        colorPowerList = new Dictionary<string, Color32>();
         colorPowerList.Add("CRAZYBALL", c1);
         colorPowerList.Add("ZONEENLARGER", c2);
         colorPowerList.Add("ZONESHRINKER", c3);
@@ -56,6 +57,8 @@ public class Powers : MonoBehaviour
         tagToStringDic.Add("FREEZEOPPONENT", freezeOpponentText);
         tagToStringDic.Add("SLIMEOPPONENT", slimeOpponentText);
 
+        keyColorCellulo1 = new Dictionary<int, string>();
+        keyColorCellulo2 = new Dictionary<int, string>();
 
     }
 
@@ -151,10 +154,10 @@ public class Powers : MonoBehaviour
     {
         Debug.Log("freeze oponent");
         playerToFreeze.SetHapticBackdriveAssist(-1, -1, -1);
-        if(playerToFreeze.tag == "Paddle1"){
+        if(playerToFreeze.tag == "P1"){
             Invoke("clearHapticFeedbackPaddle1", 5f);
 
-        }else if(playerToFreeze.tag == "Paddle2"){
+        }else if(playerToFreeze.tag == "P2"){
             Invoke("clearHapticFeedbackPaddle2", 5f);
         } 
     }
@@ -162,10 +165,10 @@ public class Powers : MonoBehaviour
     {
         Debug.Log("slime oponent");
         playerToSlime.MoveOnMud();
-        if(playerToSlime.tag == "Paddle1"){
+        if(playerToSlime.tag == "P1"){
             Invoke("clearHapticFeedbackPaddle1", 10f);
 
-        }else if(playerToSlime.tag == "Paddle2"){
+        }else if(playerToSlime.tag == "P2"){
             Invoke("clearHapticFeedbackPaddle2", 10f);
         }
     }
@@ -206,6 +209,7 @@ public class Powers : MonoBehaviour
 
     public void assignLedToPower(CelluloAgent agent, string power, int LED)
     {
+        addDictionnary(agent, LED, power);
         switch (power)
         {
             case "CRAZYBALL":
@@ -229,21 +233,21 @@ public class Powers : MonoBehaviour
         }
     }
 
-    public void buttonsRealCellulo(Color color, string player)
+    public void buttonsRealCellulo(int key, string player)
     {
-        powerSwitch(findKey(color), player);
+        powerSwitch(findKey(key, player), player);
     }
 
-    private string findKey(Color color)
+    private string findKey(int key, string player)
     {
-        foreach (string keyVar in colorPowerList.Keys)
-        {
-            if (colorPowerList[keyVar] == color)
-            {
-                return keyVar;
-            }
+        if(player == "P1"){
+            return keyColorCellulo1[key];
+        }else if(player == "P2"){
+            return keyColorCellulo1[key];
+        }else{
+            Debug.Log("Not assigned");
+            return null;
         }
-        return null;
     }
 
     public Color getColorButton(string s)
@@ -254,5 +258,13 @@ public class Powers : MonoBehaviour
     public string getStringFromTag(string s)
     {
         return tagToStringDic[s];
+    }
+
+    public void addDictionnary(CelluloAgent agent, int key, string power){
+        if(agent.tag == "P1"){
+            keyColorCellulo1.Add(key, power);
+        }else if(agent.tag == "P2"){
+            keyColorCellulo2.Add(key, power);
+        }
     }
 }
