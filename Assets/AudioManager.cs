@@ -9,10 +9,11 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] clips;
     private AudioSource audioSource;
     int clipOrder = 0; // for ordered playlist
-    int volume = 6;
+    int volume;
 
     void Start()
     {
+        volume = 6;
         audioSource = GetComponent<AudioSource>();
         audioSource.loop = false;
     }
@@ -65,7 +66,8 @@ public class AudioManager : MonoBehaviour
     {
         if(volume < 6)
         {
-            audioSource.volume = ((float)volume/6) + (1/6);
+            ++volume;
+            audioSource.volume = (float)volume/6;
         }
 
     }
@@ -73,7 +75,8 @@ public class AudioManager : MonoBehaviour
     {
         if (volume > 0)
         {
-            audioSource.volume = ((float)volume /6) - (1/6);
+            --volume;
+            audioSource.volume = (float)volume/6;
         }
 
     }

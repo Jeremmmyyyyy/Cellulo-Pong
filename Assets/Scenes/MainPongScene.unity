@@ -229,7 +229,7 @@ RectTransform:
   m_LocalScale: {x: 0.7781549, y: 0.7781549, z: 0.7781549}
   m_Children: []
   m_Father: {fileID: 555710415}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -960,8 +960,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 82160599}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.72, y: 14.83, z: -10.79}
-  m_LocalScale: {x: 28.33, y: 1, z: 1}
+  m_LocalPosition: {x: -17.72, y: 14.89, z: -10.5}
+  m_LocalScale: {x: 28.33, y: 1, z: 1.5}
   m_Children: []
   m_Father: {fileID: 1595573128}
   m_RootOrder: 0
@@ -5061,6 +5061,7 @@ GameObject:
   - component: {fileID: 500889003}
   - component: {fileID: 500889002}
   - component: {fileID: 500889001}
+  - component: {fileID: 500889005}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -5151,9 +5152,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
-        m_MethodName: LoadNextLevel
+      - m_Target: {fileID: 500889005}
+        m_TargetAssemblyTypeName: BackToMenu, Assembly-CSharp
+        m_MethodName: MenuScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5201,6 +5202,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 500888999}
   m_CullTransparentMesh: 1
+--- !u!114 &500889005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500888999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb69bb19e4c3daf45bb9b95b5c4744bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &509026373
 GameObject:
   m_ObjectHideFlags: 0
@@ -5501,7 +5514,7 @@ RectTransform:
   m_LocalScale: {x: 0.7781549, y: 0.7781549, z: 0.7781549}
   m_Children: []
   m_Father: {fileID: 555710415}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5560,7 +5573,19 @@ MonoBehaviour:
       m_Calls: []
   OnRevealCompleted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 697017067}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   OnUnrevealStarted:
     m_PersistentCalls:
       m_Calls: []
@@ -6246,9 +6271,9 @@ RectTransform:
   - {fileID: 1984955556}
   - {fileID: 1896735796}
   - {fileID: 509026374}
-  - {fileID: 697017068}
   - {fileID: 23345219}
   - {fileID: 522136044}
+  - {fileID: 697017068}
   m_Father: {fileID: 314688639}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7371,15 +7396,15 @@ GameObject:
   - component: {fileID: 697017072}
   - component: {fileID: 697017071}
   - component: {fileID: 697017070}
-  - component: {fileID: 697017069}
   - component: {fileID: 697017073}
+  - component: {fileID: 697017069}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &697017068
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7393,7 +7418,7 @@ RectTransform:
   m_Children:
   - {fileID: 1234770941}
   m_Father: {fileID: 555710415}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8429,7 +8454,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816827289}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -122.15}
+  m_LocalPosition: {x: 0, y: 0, z: -230.02}
   m_LocalScale: {x: 0.7702982, y: 0.7702982, z: 0.7702982}
   m_Children:
   - {fileID: 511755122}
@@ -9587,8 +9612,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 923618463}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -4.05, y: 14.83, z: -1.09}
-  m_LocalScale: {x: 18.5, y: 1, z: 1}
+  m_LocalPosition: {x: -4.3, y: 14.83, z: -1.09}
+  m_LocalScale: {x: 18.5, y: 1, z: 1.5}
   m_Children: []
   m_Father: {fileID: 1595573128}
   m_RootOrder: 2
@@ -11653,8 +11678,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1089719736}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.71, y: 14.83, z: 8.27}
-  m_LocalScale: {x: 28.33, y: 1, z: 1}
+  m_LocalPosition: {x: -17.71, y: 15, z: 7.98}
+  m_LocalScale: {x: 28.33, y: 1, z: 1.5}
   m_Children: []
   m_Father: {fileID: 1595573128}
   m_RootOrder: 1
@@ -12828,8 +12853,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1217740387}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -31.38, y: 14.83, z: -1.1}
-  m_LocalScale: {x: 18.5, y: 1, z: 1}
+  m_LocalPosition: {x: -31.02, y: 14.83, z: -1.1}
+  m_LocalScale: {x: 18.5, y: 1, z: 1.5}
   m_Children: []
   m_Father: {fileID: 1595573128}
   m_RootOrder: 3
@@ -20723,6 +20748,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 23345218}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 697017067}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
