@@ -46,9 +46,13 @@ public class MoveWithKeyboard : AgentBehaviour
         agent.ActivateDirectionalHapticFeedback();
         foreach (ContactPoint contact in collision.contacts)
         steering.linear = collision.contacts[0].normal.normalized*agent.maxAccel;
-        collisionBehavior = true;     
+        collisionBehavior = true;  
+        Invoke("setFalse", 0.1f);   
     }
 
+    private void setFalse(){
+        collisionBehavior = false; 
+    }
     void OnCollisionExit(Collision collision){
         agent.DeActivateDirectionalHapticFeedback();
         collisionBehavior = false; 
