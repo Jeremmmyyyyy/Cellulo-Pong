@@ -9,6 +9,6 @@ real world! The game we created is a remake of the original game with quite some
 ! You are now able to enlarge or shrink the zone the Cellulo Paddles lie in, make the
 Cellulo Ball go crazy, freeze your opponents, and more.
 
-The full report is available [here]()
+The full report is available [here](https://github.com/Jeremmmyyyyy/CS213-PONG/blob/main/Milestone%203%20-%20Report.pdf)
 
-You can see a demo video of the project [here]()
+You can see a demo video of the project [here](https://jeremmmyyyyy.github.io/)
